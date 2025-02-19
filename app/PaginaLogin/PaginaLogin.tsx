@@ -28,9 +28,12 @@ export default function LoginPage() {
 
         {/* Buttons */}
         <div className="w-full space-y-4 max-w-xs">
-          <Button className="w-full bg-emerald-400 hover:bg-emerald-500 text-white">Sign up</Button>
+          <Button className="w-full bg-emerald-400 hover:bg-emerald-500 text-white">
+            Entrar
+          </Button>
+          
           <Button variant="secondary" className="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-600">
-            Log in
+            Criar conta 
           </Button>
         </div>
 

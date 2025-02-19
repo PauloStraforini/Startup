@@ -18,11 +18,16 @@ export default function LoginPage() {
 
         {/* Buttons */}
         <div className="w-full space-y-4 max-w-xs">
-          <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">Sign up</Button>
-          <Button variant="secondary" className="w-full bg-indigo-500 hover:bg-indigo-600 text-white">
-            Log in
+          <Button className="w-full bg-emerald-500 hover:bg-emerald-700 text-white">
+            Entrar
           </Button>
         </div>
+
+        <div className="w-full space-y-4 max-w-xs mt-5">
+          <Button variant="secondary" className="w-full bg-indigo-500 hover:bg-indigo-700 text-white">
+            Criar conta 
+          </Button>
+        </div> 
 
         {/* Footer Links */}
         <div className="mt-auto mb-20 flex gap-3 text-sm text-muted-foreground">
