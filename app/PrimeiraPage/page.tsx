@@ -2,7 +2,7 @@ import { Bell, Home, PieChart, Settings, Users } from 'lucide-react'
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-950 to-purple-900 p-6 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-800 to-teal-800 p-6 text-white">
       <div className="mx-auto max-w-md">
         {/* Header */}
         <header className="mb-8">
