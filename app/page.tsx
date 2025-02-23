@@ -9,7 +9,7 @@ import icon3 from "@/components/images/icon3.png";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background bg-white flex flex-col">
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-6 pt-12">
         {/* Logo */}
