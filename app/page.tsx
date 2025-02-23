@@ -13,7 +13,7 @@ export default function LoginPage() {
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-6 pt-12">
         {/* Logo */}
-        <div className="flex flex-col items-center mt-24 mb-4">
+        <div className="flex flex-col items-center mb-4">
           <Image
             src={image1 || "/placeholder.svg"}
             alt="Logo Votorantim"
