@@ -32,12 +32,14 @@ export default function LoginPage() {
                 width={150}
                 height={100}
               />
+               <Link href="/PrimeiraPage">
               <Button
                 variant="secondary"
                 className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-blue-500 hover:text-white"
               >
                 Entrar
               </Button>
+              </Link>
             </CardContent>
           </Card>
 

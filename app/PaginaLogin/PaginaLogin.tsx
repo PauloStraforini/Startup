@@ -1,44 +1,66 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+import image1 from "@/components/images/image 1.png";
+import icon2 from "@/components/images/icon2.png";
+import icon3 from "@/components/images/icon3.png";
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Status Bar */}
-      <div className="h-10 px-4 flex items-center justify-between text-sm">
-        <span>1:44</span>
-        <div className="flex items-center gap-1">
-          <span>100%</span>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-white flex flex-col">
       {/* Main Content */}
       <main className="flex-1 flex flex-col items-center px-6 pt-12">
         {/* Logo */}
-        <div className="w-16 h-16 mb-12">
+        <div className="flex flex-col items-center mb-4">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0lj5CxLLWxEuha7CXu9mTmPnz2q3JC.png"
-            alt="Splitwise Logo"
-            width={64}
-            height={64}
-            className="w-full h-full object-contain"
+            src={image1 || "/placeholder.svg"}
+            alt="Logo Votorantim"
+            width={500}
+            height={500}
           />
         </div>
 
-        {/* Buttons */}
-        <div className="w-full space-y-4 max-w-xs">
-          <Button className="w-full bg-emerald-400 hover:bg-emerald-500 text-white">
-            Entrar
-          </Button>
-          
-          <Button variant="secondary" className="w-full bg-indigo-100 hover:bg-indigo-200 text-indigo-600">
-            Criar conta 
-          </Button>
+        {/* Cards lado a lado */}
+        <div className="flex flex-row gap-4">
+          <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 border-zinc-300 hover:border-blue-300">
+            <CardContent className="flex flex-col items-center gap-8 py-8">
+              <Image
+                src={icon2 || "/placeholder.svg"}
+                alt="Entrar"
+                width={150}
+                height={100}
+              />
+              <Button
+                variant="secondary"
+                className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-blue-500 hover:text-white"
+              >
+                Entrar
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 border-zinc-300 hover:border-teal-500">
+            <CardContent className="flex flex-col items-center gap-8 py-8">
+              <Image
+                src={icon3 || "/placeholder.svg"}
+                alt="Entrar"
+                width={150}
+                height={100}
+              />
+              <Button
+                variant="secondary"
+                className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-teal-500 hover:text-white"
+              >
+                Criar conta
+              </Button>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Footer Links */}
-        <div className="mt-auto mb-20 flex gap-3 text-sm text-muted-foreground">
+        <div className="mt-auto mb-20 flex gap-3 text-sm text-muted-foreground pt-8">
           <Link href="#" className="hover:underline">
             Terms
           </Link>
@@ -51,20 +73,7 @@ export default function LoginPage() {
             Contact us
           </Link>
         </div>
-
-        {/* Decorative Bottom Shapes */}
-        <div className="fixed bottom-0 left-0 right-0 h-24 overflow-hidden">
-          <div className="relative w-full h-full">
-            <div className="absolute bottom-0 left-0 w-full h-24 flex">
-              <div className="w-1/4 h-full transform skew-x-12 -ml-8 bg-emerald-400" />
-              <div className="w-1/4 h-full transform skew-x-12 bg-purple-400" />
-              <div className="w-1/4 h-full transform skew-x-12 bg-orange-400" />
-              <div className="w-1/4 h-full transform skew-x-12 bg-emerald-500" />
-            </div>
-          </div>
-        </div>
       </main>
     </div>
-  )
+  );
 }
-
