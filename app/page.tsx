@@ -24,7 +24,7 @@ export default function LoginPage() {
 
         {/* Cards lado a lado */}
         <div className="flex flex-row gap-4">
-          <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 border-zinc-300 hover:border-blue-300">
+          <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:bg-cyan-800 hover:-translate-y-1 border-zinc-300 hover:border-blue-300">
             <CardContent className="flex flex-col items-center gap-8 py-8">
               <Image
                 src={icon2 || "/placeholder.svg"}
@@ -35,7 +35,7 @@ export default function LoginPage() {
                <Link href="/PrimeiraPage">
               <Button
                 variant="secondary"
-                className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-blue-500 hover:text-white"
+                className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-cyan-800 hover:text-white"
               >
                 Entrar
               </Button>
@@ -43,7 +43,7 @@ export default function LoginPage() {
             </CardContent>
           </Card>
 
-          <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:-translate-y-1 border-zinc-300 hover:border-teal-500">
+          <Card className="transition-all duration-300 ease-in-out hover:shadow-lg hover:bg-teal-500 hover:-translate-y-1 border-zinc-300 hover:border-teal-500">
             <CardContent className="flex flex-col items-center gap-8 py-8">
               <Image
                 src={icon3 || "/placeholder.svg"}
@@ -51,12 +51,15 @@ export default function LoginPage() {
                 width={150}
                 height={100}
               />
+
+              <Link href="/PageCriarConta">
               <Button
                 variant="secondary"
                 className="transition-all duration-300 ease-in-out hover:scale-105 hover:bg-teal-500 hover:text-white"
               >
                 Criar conta
               </Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
