@@ -223,7 +223,7 @@ interface QuickActionButtonProps {
     className?: string;
   }
   
-  function QuickActionButton({ icon: Icon, text, bgColor, className = "" }: QuickActionButtonProps) {
+  function QuickActionButton({ icon: Icon, text, bgColor, className }: QuickActionButtonProps) {
     return (
       <Button
         className={`h-24 md:h-32 text-base md:text-lg text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${bgColor} ${className}`}
