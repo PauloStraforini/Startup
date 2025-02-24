@@ -114,8 +114,8 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-700 text-base md:text-lg">
-                "Respire fundo por 5 segundos antes de responder a uma situação estressante. Isso ajuda a acalmar sua
-                mente e tomar decisões mais conscientes."
+                Respire fundo por 5 segundos antes de responder a uma situação estressante. Isso ajuda a acalmar sua
+                mente e tomar decisões mais conscientes.
               </p>
             </CardContent>
           </Card>
