@@ -177,60 +177,20 @@ export default function Home() {
             <Link href="/MeditacaoPAge">
             <Button className="bg-indigo-600 hover:bg-indigo-700 text-white text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Complete 5 min de meditação
-            </Button>
+            </Button> 
             </Link>
+
+            <Link href="/DiarioPage">
             <Button className="bg-purple-600 hover:bg-purple-700 text-white text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Escreva no diário emocional
             </Button>
+            </Link>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-between items-center">
-            <div className="w-full md:w-1/3 mb-6 md:mb-0">
-              <h3 className="text-2xl font-bold mb-2">MindfulMe</h3>
-              <p className="text-indigo-200 text-base">Cuidando da sua saúde mental, todos os dias.</p>
-            </div>
-            <div className="w-full md:w-1/3 mb-6 md:mb-0">
-              <h4 className="text-lg font-semibold mb-2">Links Rápidos</h4>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/about" className="text-indigo-200 hover:text-white transition-colors text-base">
-                  Sobre o App
-                </Link>
-                <Link href="/privacy" className="text-indigo-200 hover:text-white transition-colors text-base">
-                  Privacidade
-                </Link>
-                <Link href="/terms" className="text-indigo-200 hover:text-white transition-colors text-base">
-                  Termos de Uso
-                </Link>
-                <Link href="/contact" className="text-indigo-200 hover:text-white transition-colors text-base">
-                  Contato
-                </Link>
-              </div>
-            </div>
-            <div className="w-full md:w-1/3 text-center md:text-right">
-              <h4 className="text-lg font-semibold mb-2">Siga-nos</h4>
-              <div className="flex justify-center md:justify-end space-x-4">
-                <Button variant="ghost" size="icon" className="text-white hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-110">
-                  <Image src="/instagram.svg" alt="Instagram" width={24} height={24} />
-                </Button>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-indigo-700 transition-colors duration-300 transform hover:scale-110">
-                  <Image src="/facebook.svg" alt="Facebook" width={24} height={24} />
-                </Button>
-              </div>
-              <Button className="mt-4 bg-white text-indigo-600 hover:bg-indigo-100 hover:text-indigo-700 text-base transition-colors duration-300">
-                Avalie o App
-              </Button>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-indigo-500 text-center text-indigo-200 text-base">
-            &copy; 2024 MindfulMe. Todos os direitos reservados.
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }
