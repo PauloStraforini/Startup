@@ -1,209 +1,139 @@
 "use client"
 
-import { useState } from "react"
-import Image from "next/image"
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Moon, Sun, Volume2, Play, Pause, SkipBack, SkipForward } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Progress } from "@/components/ui/progress"
+import { Play, Pause, RotateCcw, ArrowLeft } from "lucide-react"
 
-// MotionCard for animations
-const MotionCard = motion.div
-
-export default function MeditationPage() {
-  const [darkMode, setDarkMode] = useState(false)
-  const [focusMode, setFocusMode] = useState(false)
+export default function MeditacaoPage() {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [timeLeft, setTimeLeft] = useState(300) // 5 minutes in seconds
 
-  const toggleDarkMode = () => setDarkMode(!darkMode)
-  const toggleFocusMode = () => setFocusMode(!focusMode)
-  const togglePlayPause = () => setIsPlaying(!isPlaying)
+  useEffect(() => {
+    let interval: NodeJS.Timeout
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    if (isPlaying && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1)
+        setProgress((prevProgress) => prevProgress + 100 / 300)
+      }, 1000)
+    } else if (timeLeft === 0) {
+      setIsPlaying(false)
+    }
+
+    return () => clearInterval(interval)
+  }, [isPlaying, timeLeft])
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying)
+  }
+
+  const resetMeditation = () => {
+    setIsPlaying(false)
+    setTimeLeft(300)
+    setProgress(0)
+  }
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60)
+    const remainingSeconds = seconds % 60
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`
   }
 
   return (
-    <div className={`min-h-screen flex flex-col ${darkMode ? "dark" : ""}`}>
-      <div className="fixed inset-0 z-[-1]">
-        <Image
-          src="/placeholder.svg?height=1080&width=1920"
-          alt="Peaceful nature scene"
-          layout="fill"
-          objectFit="cover"
-          quality={100}
-        />
-      </div>
-
-      <header
-        className={`bg-white bg-opacity-20 dark:bg-gray-800 dark:bg-opacity-20 backdrop-blur-md ${focusMode ? "hidden" : ""}`}
-      >
-        <div className="container mx-auto px-6 py-6 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-serif text-gray-800 dark:text-gray-200">
-            Serenity
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+      <header className="sticky top-0 z-10 backdrop-blur-md bg-white/70 border-b border-gray-200">
+        <div className="container mx-auto px-4 py-3 flex items-center">
+          <Link href="/PrimeiraPage" className="text-indigo-600 hover:text-indigo-800 transition-colors">
+            <ArrowLeft className="h-6 w-6" />
           </Link>
-          <nav>
-            <ul className="flex space-x-6">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/sessions"
-                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
-                >
-                  Sessions
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </nav>
+          <h1 className="text-2xl font-bold ml-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+            Meditação Guiada
+          </h1>
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-6 py-12 flex flex-col items-center justify-center">
-        <h1 className="text-4xl md:text-5xl text-center font-light text-gray-800 dark:text-gray-200 mb-12">
-          Welcome, take a moment for yourself
-        </h1>
-        <Button
-          className="text-xl py-3 px-8 rounded-full bg-lavender-100 text-gray-800 hover:bg-lavender-200 transition-colors duration-300"
-          onClick={() => console.log("Start session")}
-        >
-          Start Session
-        </Button>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-          {["Deep Breathing", "Guided Meditation", "Mindfulness"].map((session, index) => (
-            <MotionCard
-              key={index}
-              className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105"
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Image
-                src={`/placeholder.svg?height=200&width=300`}
-                alt={session}
-                width={300}
-                height={200}
-                className="w-full h-40 object-cover rounded-t-lg"
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2">{session}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Duration: {5 + index * 5} minutes</p>
-              </div>
-            </MotionCard>
-          ))}
-        </div>
-
-        <div className="w-full max-w-md mt-16 bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Now Playing</h3>
-            <Volume2 className="text-gray-600 dark:text-gray-400" />
-          </div>
-          <div className="flex justify-center space-x-6">
-            <Button variant="ghost" size="icon" onClick={() => console.log("Previous")}>
-              <SkipBack className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost" size="icon" onClick={togglePlayPause}>
-              {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
-            </Button>
-            <Button variant="ghost" size="icon" onClick={() => console.log("Next")}>
-              <SkipForward className="h-6 w-6" />
-            </Button>
-          </div>
-          <div className="mt-4 bg-gray-200 dark:bg-gray-700 rounded-full h-1">
-            <div className="bg-lavender-300 h-1 rounded-full w-1/3"></div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex items-center space-x-6">
-            <div className="bg-lavender-100 dark:bg-lavender-800 rounded-full p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-lavender-600 dark:text-lavender-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+      <main className="container mx-auto px-4 py-8">
+        <Card className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl font-semibold text-indigo-700">Sessão de 5 Minutos</CardTitle>
+          </CardHeader>
+          <CardContent className="flex flex-col items-center">
+            <div className="w-64 h-64 relative mb-6">
+              <Image src="/meditation-illustration.svg" alt="Meditação" layout="fill" className="object-cover" />
+            </div>
+            <Progress value={progress} className="w-full h-4 mb-4" />
+            <p className="text-3xl font-bold text-indigo-600 mb-6">{formatTime(timeLeft)}</p>
+            <div className="flex space-x-4">
+              <Button
+                onClick={togglePlay}
+                className={`${
+                  isPlaying ? "bg-purple-600 hover:bg-purple-700" : "bg-indigo-600 hover:bg-indigo-700"
+                } text-white text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Breathing Exercises</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Calm your mind with guided breathing</p>
-            </div>
-          </div>
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 flex items-center space-x-6">
-            <div className="bg-peach-100 dark:bg-peach-800 rounded-full p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 text-peach-600 dark:text-peach-200"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+                {isPlaying ? <Pause className="h-6 w-6" /> : <Play className="h-6 w-6" />}
+              </Button>
+              <Button
+                onClick={resetMeditation}
+                className="bg-gray-200 hover:bg-gray-300 text-gray-800 text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                />
-              </svg>
+                <RotateCcw className="h-6 w-6" />
+              </Button>
             </div>
-            <div>
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">Mood Tracker</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Monitor and understand your emotions</p>
-            </div>
+          </CardContent>
+        </Card>
+
+        <section className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+            Benefícios da Meditação
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <BenefitCard
+              title="Reduz o Estresse"
+              description="A meditação ajuda a acalmar a mente e reduzir os níveis de cortisol no corpo."
+            />
+            <BenefitCard
+              title="Melhora o Foco"
+              description="Praticar meditação regularmente pode aumentar sua capacidade de concentração."
+            />
+            <BenefitCard
+              title="Promove Bem-estar"
+              description="A meditação está associada a uma maior sensação de calma e bem-estar geral."
+            />
           </div>
-        </div>
+        </section>
       </main>
 
-      <footer className={`bg-gray-100 dark:bg-gray-900 py-4 ${focusMode ? "hidden" : ""}`}>
-        <div className="container mx-auto px-6 flex justify-between items-center">
-          <div className="text-sm text-gray-600 dark:text-gray-400">
-            <Link href="/privacy" className="hover:underline">
-              Privacy Policy
-            </Link>
-            <span className="mx-2">|</span>
-            <Link href="/terms" className="hover:underline">
-              Terms & Conditions
-            </Link>
-          </div>
-          <Link href="/support" className="text-sm text-gray-600 dark:text-gray-400 hover:underline">
-            Support
-          </Link>
+      <footer className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-indigo-200 text-base">
+            Continue sua jornada de mindfulness. Pratique regularmente para melhores resultados.
+          </p>
         </div>
       </footer>
-
-      <div className="fixed bottom-4 right-4 space-x-2">
-        <Button variant="outline" size="icon" onClick={toggleDarkMode}>
-          {darkMode ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-        </Button>
-        <Button variant="outline" size="icon" onClick={toggleFocusMode}>
-          {focusMode ? "Exit Focus" : "Focus Mode"}
-        </Button>
-      </div>
     </div>
   )
 }
+
+interface BenefitCardProps {
+  title: string
+  description: string
+}
+
+function BenefitCard({ title, description }: BenefitCardProps) {
+  return (
+    <Card className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+      <CardHeader>
+        <CardTitle className="text-xl font-semibold text-indigo-700">{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-gray-600">{description}</p>
+      </CardContent>
+    </Card>
+  )
+}
+

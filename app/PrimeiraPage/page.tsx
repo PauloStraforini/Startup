@@ -173,9 +173,12 @@ export default function Home() {
             Metas Diárias
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
+
+            <Link href="/MeditacaoPAge">
             <Button className="bg-indigo-600 hover:bg-indigo-700 text-white text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Complete 5 min de meditação
             </Button>
+            </Link>
             <Button className="bg-purple-600 hover:bg-purple-700 text-white text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Escreva no diário emocional
             </Button>
