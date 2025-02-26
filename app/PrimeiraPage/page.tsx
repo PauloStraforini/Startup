@@ -89,11 +89,15 @@ export default function Home() {
             text="Fale com um Profissional"
             bgColor="bg-gradient-to-br from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700"
           />
+
+          <Link href="/DiarioPage">
           <QuickActionButton
             icon={Book}
             text="Diário Emocional"
             bgColor="bg-gradient-to-br from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700"
           />
+          </Link>
+          
           <QuickActionButton
             icon={Headphones}
             text="Exercícios de Relaxamento"
@@ -174,7 +178,7 @@ export default function Home() {
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
 
-            <Link href="/MeditacaoPAge">
+            <Link href="/MeditaçaoPage">
             <Button className="bg-indigo-600 hover:bg-indigo-700 text-white text-lg py-6 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
               Complete 5 min de meditação
             </Button> 
