@@ -14,10 +14,10 @@ datasource db {
 }
 
 model Psicologos {
-  id        Int      @id @default(autoincrement())
-  nome      String
-  email     String
-  senha     String
+  id            Int      @id @default(autoincrement())
+  nome          String
+  email         String
+  senha         String
   especialidade String
-  createdAt DateTime @default(now())
+  createdAt     DateTime @default(now())
 }
