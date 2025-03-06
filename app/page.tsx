@@ -168,10 +168,12 @@ export default function Home() {
                 psicólogos.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/psicologos/login">
                 <button className="bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1 flex items-center justify-center">
                   Comece Agora
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
+              </Link>
                 <button className="border border-teal-400/30 hover:border-teal-400 text-white font-medium py-3 px-8 rounded-full text-lg transition-all duration-300 hover:bg-indigo-700/30">
                   Saiba Mais
                 </button>
@@ -630,10 +632,13 @@ export default function Home() {
               por 7 dias e veja a diferença.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1 flex items-center justify-center">
-                Comece Agora
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </button>
+              <Link href="/psicologos/login">
+                <button className="bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1 flex items-center justify-center">
+                  Comece Agora
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </button>
+              </Link>
+
               <button className="border border-teal-400/30 hover:border-teal-400 text-white font-medium py-3 px-8 rounded-full text-lg transition-all duration-300 hover:bg-indigo-700/30">
                 Agendar Demonstração
               </button>
