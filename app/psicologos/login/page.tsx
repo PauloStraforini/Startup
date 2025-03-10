@@ -1,234 +1,157 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, Brain, Eye, EyeOff, AlertCircle } from "lucide-react"
+import { Eye, EyeOff, Shield, Info } from "lucide-react"
+import { useState } from "react"
 
-export default function AuthPage() {
-  const [isLogin, setIsLogin] = useState(true)
+import Psychologist from "@/components/images/Psychologist-amico.svg"
+
+export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
-  const [isGovEmployee, setIsGovEmployee] = useState(false)
-  const [govCode, setGovCode] = useState("")
-  const [govCodeError, setGovCodeError] = useState("")
-
-  const toggleAuthMode = () => setIsLogin(!isLogin)
-
-  const validateGovCode = (code: string) => {
-    // Exemplo de validação simples - código governamental deve ter 8 caracteres
-    // e começar com "GOV-"
-    const pattern = /^GOV-\d{4}$/
-    if (!pattern.test(code)) {
-      setGovCodeError("Código inválido. Formato esperado: GOV-XXXX")
-      return false
-    }
-    setGovCodeError("")
-    return true
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-
-    // Se for funcionário governamental, valida o código
-    if (isGovEmployee) {
-      const isValid = validateGovCode(govCode)
-      if (!isValid) return
-    }
-
-    // Aqui você implementaria a lógica de autenticação/registro
-    console.log("Form submitted", { isLogin, isGovEmployee, govCode })
-  }
+  const [credentialType, setCredentialType] = useState("crp")
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-indigo-100 to-blue-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link href="/" className="flex items-center justify-center gap-2 mb-6">
-          <Brain className="h-10 w-10 text-indigo-600" />
-          <span className="text-3xl font-bold text-indigo-600">PsyTech</span>
-        </Link>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          {isLogin ? "Entre na sua conta" : "Crie sua conta"}
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          {isLogin ? "Novo na plataforma?" : "Já tem uma conta?"}{" "}
-          <button
-            onClick={toggleAuthMode}
-            className="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-          >
-            {isLogin ? "Crie uma conta" : "Faça login"}
-          </button>
-        </p>
-      </div>
+    <div className="flex min-h-screen bg-gradient-to-br from-purple-600 via-indigo-700 to-blue-700">
+      {/* Left side - Login Form */}
+      <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-white bg-opacity-10 backdrop-blur-lg">
+        <div className="max-w-md mx-auto w-full bg-white p-8 rounded-2xl shadow-xl">
+          <div className="flex items-center gap-2 mb-2">
+            <Shield className="h-6 w-6 text-indigo-600" />
+            <span className="text-sm font-medium text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+              Portal Oficial
+            </span>
+          </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            {!isLogin && (
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                  Nome completo
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    autoComplete="name"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-            )}
+          <h1 className="text-3xl font-bold mb-2 text-gray-800">Área do Psicólogo</h1>
+          <p className="text-gray-600 mb-8">
+            Acesse o sistema com suas credenciais profissionais para gerenciar seus pacientes e documentos.
+          </p>
 
+          <form className="space-y-4">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email
-              </label>
-              <div className="mt-1">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Senha
-              </label>
-              <div className="mt-1 relative">
-                <input
-                  id="password"
-                  name="password"
-                  type={showPassword ? "text" : "password"}
-                  autoComplete="current-password"
-                  required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                />
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400" />
-                  ) : (
-                    <Eye className="h-5 w-5 text-gray-400" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {!isLogin && (
-              <div>
-                <label htmlFor="password_confirmation" className="block text-sm font-medium text-gray-700">
-                  Confirme a senha
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="password_confirmation"
-                    name="password_confirmation"
-                    type="password"
-                    autoComplete="new-password"
-                    required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-              </div>
-            )}
-
-            {/* Campo de seleção para funcionário governamental */}
-            <div className="flex items-center">
-              <input
-                id="gov_employee"
-                name="gov_employee"
-                type="checkbox"
-                checked={isGovEmployee}
-                onChange={() => setIsGovEmployee(!isGovEmployee)}
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-              />
-              <label htmlFor="gov_employee" className="ml-2 block text-sm text-gray-900">
-                Sou funcionário da área governamental
-              </label>
-            </div>
-
-            {/* Campo de código governamental */}
-            {isGovEmployee && (
-              <div>
-                <label htmlFor="gov_code" className="block text-sm font-medium text-gray-700">
-                  Código Governamental
-                </label>
-                <div className="mt-1">
-                  <input
-                    id="gov_code"
-                    name="gov_code"
-                    type="text"
-                    value={govCode}
-                    onChange={(e) => setGovCode(e.target.value)}
-                    placeholder="GOV-XXXX"
-                    required={isGovEmployee}
-                    className={`appearance-none block w-full px-3 py-2 border ${
-                      govCodeError ? "border-red-300" : "border-gray-300"
-                    } rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
-                  />
-                  {govCodeError && (
-                    <div className="mt-1 text-sm text-red-600 flex items-center">
-                      <AlertCircle className="h-4 w-4 mr-1" />
-                      {govCodeError}
-                    </div>
-                  )}
-                  <p className="mt-1 text-xs text-gray-500">Formato: GOV-XXXX (onde XXXX são números)</p>
-                </div>
-              </div>
-            )}
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember_me"
-                  name="remember_me"
-                  type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
-                  Lembrar-me
-                </label>
-              </div>
-
-              {isLogin && (
-                <div className="text-sm">
-                  <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-                    Esqueceu sua senha?
-                  </a>
-                </div>
-              )}
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Credencial</label>
+              <select
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+                value={credentialType}
+                onChange={(e) => setCredentialType(e.target.value)}
               >
-                {isLogin ? "Entrar" : "Criar conta"}
+                <option value="crp">CRP - Conselho Regional de Psicologia</option>
+                <option value="cfp">CFP - Conselho Federal de Psicologia</option>
+                <option value="epsi">e-Psi - Cadastro Nacional</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Número de Registro</label>
+              <input
+                type="text"
+                placeholder={credentialType === "crp" ? "CRP 00/00000" : "Número de registro"}
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              />
+            </div>
+
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Senha"
+                className="w-full px-4 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-400"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-4 top-[60%] -translate-y-1/2 text-gray-500"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
             </div>
+
+            <div className="text-right">
+              <Link href="#" className="text-sm text-indigo-600 hover:text-indigo-800">
+                Esqueceu sua senha?
+              </Link>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-indigo-600 text-white py-3 rounded-full font-medium hover:bg-indigo-700 transition-colors"
+            >
+              Acessar Sistema
+            </button>
           </form>
 
-          
+          <div className="mt-6 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+            <div className="flex items-start gap-3">
+              <Info className="h-5 w-5 text-indigo-500 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-indigo-700">
+                <p className="font-medium mb-1">Credenciais Profissionais</p>
+                <p>
+                  Para acessar o sistema, é necessário possuir registro ativo no Conselho Regional de Psicologia (CRP)
+                  ou outra credencial oficial reconhecida pelo Ministério da Saúde.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 text-center text-sm text-gray-600">
+            Não possui cadastro?{" "}
+            <Link href="#" className="text-indigo-600 font-medium hover:underline">
+              Solicitar acesso
+            </Link>
+          </div>
+
+          <div className="mt-4 text-center">
+            <Link href="#" className="text-xs text-gray-500 hover:text-gray-700">
+              Política de Privacidade
+            </Link>
+            <span className="mx-2 text-gray-300">|</span>
+            <Link href="#" className="text-xs text-gray-500 hover:text-gray-700">
+              Termos de Uso
+            </Link>
+            <span className="mx-2 text-gray-300">|</span>
+            <Link href="#" className="text-xs text-gray-500 hover:text-gray-700">
+              Suporte
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className="mt-8 text-center">
-        <Link href="/" className="text-indigo-600 hover:text-indigo-500 flex items-center justify-center">
-          <ArrowLeft className="mr-2 h-5 w-5" />
-          Voltar para a página inicial
-        </Link>
+      {/* Right side - Illustration */}
+      <div className="hidden md:block md:w-1/2 relative">
+        <div className="absolute inset-0 flex flex-col items-center justify-center p-12">
+          <div className="relative w-full max-w-md">
+            <Image
+              src={Psychologist || "/placeholder.svg"}
+              alt="Ilustração de psicólogo"
+              width={400}
+              height={400}
+              className="mx-auto"
+            />
+
+            {/* Canva Design Card */}
+            <div className="absolute bottom-0 right-0 bg-white rounded-lg shadow-md p-3 flex items-center gap-3">
+              <div>
+                <p className="text-sm font-medium">Sistema Nacional</p>
+                <p className="text-xs text-gray-500">Psicólogos</p>
+              </div>
+              <div className="bg-indigo-100 text-indigo-700 rounded px-2 py-1 text-xs">Oficial</div>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <h2 className="text-xl font-semibold text-white">
+              Plataforma oficial para profissionais de psicologia credenciados
+            </h2>
+          </div>
+        </div>
+
+        {/* Pagination dots */}
+        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-1">
+          <div className="w-6 h-2 bg-white rounded-full"></div>
+          <div className="w-2 h-2 bg-white bg-opacity-50 rounded-full"></div>
+          <div className="w-2 h-2 bg-white bg-opacity-50 rounded-full"></div>
+        </div>
       </div>
     </div>
   )
