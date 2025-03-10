@@ -30,6 +30,7 @@ import User1 from "@/components/images/user_1.jpg"
 import User2 from "@/components/images/user_2.jpg"
 import User3 from "@/components/images/user_3.jpg"
 import User4 from "@/components/images/user_4.jpg"
+import Icon6 from "@/components/images/icon6.png"
 
 
 
@@ -201,11 +202,11 @@ export default function Home() {
             <div className="md:w-1/2 relative animate-float">
               <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-purple-500/20 rounded-2xl blur-3xl transform -rotate-6"></div>
               <Image
-                src="/placeholder.svg?height=600&width=600"
+                src={Icon6} 
                 alt="Ilustração de psicologia"
                 width={600}
                 height={500}
-                className="rounded-2xl shadow-2xl relative z-10 border border-indigo-700/30"
+                className="rounded-2xl  "
               />
               <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-teal-400 to-teal-500 rounded-2xl p-4 shadow-xl transform rotate-3 z-20">
                 <div className="flex items-center gap-3">
