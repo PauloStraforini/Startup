@@ -114,10 +114,13 @@ export default function Home() {
           </button>
 
           {/* CTA Button */}
-          <button className="hidden md:block bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-2 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1">
-            Experimente Grátis
-          </button>
+          <Link href='/login'>
+            <button className="hidden md:block bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-2 px-6 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1">
+              Experimente Grátis
+            </button>
+          </Link>
         </div>
+        
 
         {/* Mobile Navigation */}
         <div
