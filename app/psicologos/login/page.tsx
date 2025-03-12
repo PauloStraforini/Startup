@@ -7,6 +7,9 @@ import Link from "next/link"
 import { Eye, EyeOff, Shield, Info, Brain, Lock, ArrowRight, CheckCircle } from "lucide-react"
 import { useState } from "react"
 
+import Apoio from "@/components/images/Doctor-pana.svg"
+
+
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [credentialType, setCredentialType] = useState("crp")
@@ -60,9 +63,9 @@ export default function LoginPage() {
                   value={credentialType}
                   onChange={(e) => setCredentialType(e.target.value)}
                 >
-                  <option value="crp">CRP - Conselho Regional de Psicologia</option>
+                  
                   <option value="cfp">CFP - Conselho Federal de Psicologia</option>
-                  <option value="epsi">e-Psi - Cadastro Nacional</option>
+                  
                 </select>
                 <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +157,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Não possui cadastro?{" "}
-            <Link href="#" className="text-indigo-600 font-medium hover:underline transition-colors">
+            <Link href="psicologos/cadastro" className="text-indigo-600 font-medium hover:underline transition-colors">
               Solicitar acesso
             </Link>
           </div>
@@ -184,10 +187,10 @@ export default function LoginPage() {
             </div>
 
             <Image
-              src="/placeholder.svg?height=400&width=400"
+              src={Apoio || "/placeholder.svg"}
               alt="Ilustração de psicólogo"
-              width={400}
-              height={400}
+              width={1000}
+              height={600}
               className="mx-auto filter drop-shadow-2xl"
             />
 
