@@ -10,6 +10,8 @@ import User2 from "@/components/images/user_2.jpg"
 import User3 from "@/components/images/user_3.jpg"
 import User4 from "@/components/images/user_4.jpg"
 
+import Apoio from "@/components/images/Psychologist-amico.svg"
+
 
 
 export default function Home() {
@@ -196,21 +198,21 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="text-sm text-indigo-200">
-                  <span className="font-bold text-teal-300">500+</span> psicólogos já utilizam
+                  <span className="font-bold text-teal-300  text-end">500+</span> psicólogos já utilizam
                 </div>
               </div>
             </div>
             <div className="md:w-1/2 relative animate-float">
               <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-purple-500/20 rounded-2xl blur-3xl transform -rotate-6"></div>
-              <div className="relative bg-gradient-to-r from-indigo-800/50 to-indigo-700/50 p-2 rounded-2xl backdrop-blur-sm border border-indigo-600/30 shadow-2xl">
-                <Image
-                  src="/placeholder.svg?height=500&width=600"
+                <div className="relative bg-gradient-to-r from-indigo-800/50 to-indigo-700/50 p-2 rounded-2xl backdrop-blur-sm border border-indigo-600/30 shadow-2xl flex justify-center items-center transform transition-transform duration-500 hover:scale-105 hover:rotate-2">
+                  <Image
+                  src={Apoio || "/placeholder.svg"}
                   alt="Ilustração de psicologia"
                   width={600}
-                  height={500}
+                  height={400}
                   className="rounded-xl shadow-inner"
-                />
-              </div>
+                  />
+                </div>
               <div className="absolute -bottom-6 -right-6 bg-gradient-to-r from-teal-400 to-teal-500 rounded-2xl p-4 shadow-xl transform rotate-3 z-20 border border-teal-300 backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                   <Heart className="h-8 w-8 text-indigo-900" />
@@ -232,22 +234,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Wave Divider */}
-          <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-            <svg
-              data-name="Layer 1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1200 120"
-              preserveAspectRatio="none"
-              className="w-full h-16 text-slate-50"
-            >
-              <path
-                d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,141.14,213.2,141.14c67.6,0,124.85-16.82,187.19-43.3,62.34-26.48,121.87-59.42,171-76.41Z"
-                fill="currentColor"
-              ></path>
-            </svg>
           </div>
         </section>
 
