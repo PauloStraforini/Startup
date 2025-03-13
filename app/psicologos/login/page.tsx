@@ -135,8 +135,10 @@ export default function LoginPage() {
                 </svg>
               ) : (
                 <>
-                  Acessar Sistema
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <link href="/psicologos/dashboard">
+                    Acessar Sistema
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </link>
                 </>
               )}
             </button>
