@@ -157,7 +157,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Não possui cadastro?{" "}
-            <Link href="psicologos/cadastro" className="text-indigo-600 font-medium hover:underline transition-colors">
+            <Link href="/psicologos/cadastro" className="text-indigo-600 font-medium hover:underline transition-colors">
               Solicitar acesso
             </Link>
           </div>
