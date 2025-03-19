@@ -8,7 +8,8 @@ datasource db {
 }
 
 model Psicologos {
-  id            String   @id @db.VarChar(6)
+  id            String   @id @default(uuid()) 
+  credencial   String   @unique @db.VarChar(6)
   nome          String
   email         String
   senha         String
