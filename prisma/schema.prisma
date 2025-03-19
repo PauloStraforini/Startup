@@ -14,7 +14,8 @@ datasource db {
 }
 
 model Psicologos {
-  id            String   @id @default(cuid()) @db.VarChar(6)
+  id            Int      @id @default(autoincrement())
+  credencial    String   @unique @db.VarChar(6)
   nome          String
   email         String
   senha         String
