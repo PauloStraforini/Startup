@@ -111,14 +111,16 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              <div className="space-y-1.5">
+                <div className="space-y-1.5">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Número de Registro</label>
                 <input
                   type="text"
                   placeholder={credentialType === "crp" ? "CRP 00/00000" : "Número de registro"}
+                  pattern="[A-Za-z0-9]{6,6}"
+                  title="O número de registro deve ter exatamente 6 caracteres, podendo ser letras e números."
                   className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
                 />
-              </div>
+                </div>
 
               <div className="relative space-y-1.5">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Senha</label>
@@ -239,15 +241,17 @@ export default function RegisterPage() {
                     <FileText className="h-5 w-5 text-gray-400" />
                   </div>
                   <select className="w-full pl-10 pr-10 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent appearance-none bg-white transition-all duration-200">
-                    <option value="">Selecione sua especialidade</option>
+                  <option value="">Selecione sua especialidade</option>
                     <option value="clinica">Psicologia Clínica</option>
                     <option value="organizacional">Psicologia Organizacional</option>
-                    <option value="educacional">Psicologia Educacional</option>
-                    <option value="saude">Psicologia da Saúde</option>
-                    <option value="esporte">Psicologia do Esporte</option>
-                    <option value="forense">Psicologia Forense</option>
-                    <option value="social">Psicologia Social</option>
                     <option value="neuropsicologia">Neuropsicologia</option>
+                    <option value="escolar">Psicologia Escolar</option>
+                    <option value="social">Psicologia Social</option>
+                    <option value="esporte">Psicologia do Esporte</option>
+                    <option value="juridica">Psicologia Jurídica</option>
+                    <option value="hospitalar">Psicologia Hospitalar</option>
+                    <option value="transito">Psicologia do Trânsito</option>
+                    <option value="forense">Psicologia Forense</option>
                     <option value="outro">Outra</option>
                   </select>
                   <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
@@ -333,7 +337,7 @@ export default function RegisterPage() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Já possui cadastro?{" "}
-            <Link href="#" className="text-indigo-600 font-medium hover:underline transition-colors">
+            <Link href="/psicologos/login" className="text-indigo-600 font-medium hover:underline transition-colors">
               Fazer login
             </Link>
           </div>
@@ -420,13 +424,6 @@ export default function RegisterPage() {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Pagination dots */}
-        <div className="absolute bottom-8 left-0 right-0 flex justify-center gap-2">
-          <div className="w-2 h-2 bg-white/50 rounded-full"></div>
-          <div className="w-8 h-2 bg-white rounded-full"></div>
-          <div className="w-2 h-2 bg-white/50 rounded-full"></div>
         </div>
       </div>
     </div>
