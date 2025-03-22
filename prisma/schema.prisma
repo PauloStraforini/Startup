@@ -12,7 +12,6 @@ model Psicologos {
   credencial    String   @unique @db.VarChar(6)
   nome          String
   email         String
-  senha         String   @db.VarChar(255)
   especialidade String
   createdAt     DateTime @default(now())
 }
