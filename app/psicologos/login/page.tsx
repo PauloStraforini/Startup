@@ -91,30 +91,6 @@ export default function LoginPage() {
                 className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent transition-all duration-200"
               />
             </div>
-
-            <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label className="block text-sm font-medium text-gray-700">Senha</label>
-                <Link href="#" className="text-xs text-indigo-600 hover:text-indigo-800">
-                  Esqueceu sua senha?
-                </Link>
-              </div>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Senha"
-                  className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:border-transparent pr-10 transition-all duration-200"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-indigo-600 transition-colors"
-                >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                </button>
-              </div>
-            </div>
-
             <div className="mt-6 p-4 bg-indigo-50 rounded-xl border border-indigo-100 transition-all duration-300 hover:border-indigo-200 hover:shadow-sm">
               <div className="flex items-start gap-3">
                 <Info className="h-5 w-5 text-indigo-500 flex-shrink-0 mt-0.5" />
