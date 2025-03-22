@@ -8,10 +8,10 @@ datasource db {
 }
 
 model Psicologos {
-  id            Int      @id @default(autoincrement())
-  credencial    String   @unique @db.VarChar(6)
   nome          String
   email         String
   especialidade String
   createdAt     DateTime @default(now())
+  credencial    String   @unique @db.VarChar(6)
+  id            Int      @id @default(autoincrement())
 }
