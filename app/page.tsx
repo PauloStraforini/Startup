@@ -11,6 +11,7 @@ import User3 from "@/components/images/user_3.jpg"
 import User4 from "@/components/images/user_4.jpg"
 
 import Apoio from "@/components/images/Psychologist-amico.svg"
+import Logo from "@/components/images/Logo1.png"
 
 
 
@@ -69,12 +70,15 @@ export default function Home() {
             href="/"
             className="text-2xl font-bold flex items-center gap-2 transition-transform hover:scale-105"
           >
-            <div className="relative">
-              <Brain className="h-8 w-8 text-indigo-600" />
-              <span className="absolute -top-1 -right-1 w-3 h-3 bg-teal-400 rounded-full animate-pulse"></span>
-            </div>
+            <Image
+              src={Logo || "/placeholder.svg"}
+              alt="MindFlow Logo"
+              width={120}
+              height={120}
+              className="ml-2"
+            />
             <span className="bg-gradient-to-r from-indigo-600 to-teal-500 bg-clip-text text-transparent font-extrabold">
-              PsyTech
+              MindFlow
             </span>
           </Link>
 
