@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import Image from "next/image"
 import Link from "next/link"
 import { Eye, EyeOff, Shield, Info, Brain, Lock, ArrowRight, CheckCircle, User, Mail, FileText } from "lucide-react"
@@ -13,24 +12,51 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [credentialType, setCredentialType] = useState("crp")
+  const [registerNumber, setRegisterNumber] = useState("")
+  const [fullName, setFullName] = useState("")
+  const [email, setEmail] = useState("")
+  const [specialty, setSpecialty] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [step, setStep] = useState(1)
   const [termsAccepted, setTermsAccepted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // Simulate loading
-    setTimeout(() => {
-      setIsLoading(false)
-      if (step === 1) {
+    
+    const formData = {
+      credentialType,
+      registerNumber,
+      fullName,
+      email,
+      specialty,
+      termsAccepted
+    }
+
+    try {
+      const response = await fetch("http://localhost:3000/api/psicologos_login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok) {
+        console.log("Cadastro realizado com sucesso!", result)
         setStep(2)
       } else {
-        // Final submission logic would go here
-        console.log("Registration complete")
+        console.error("Erro no cadastro:", result.message)
       }
-    }, 1500)
+    } catch (error) {
+      console.error("Erro ao conectar com o servidor:", error)
+    } finally {
+      setIsLoading(false)
+    }
   }
+
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-700 relative overflow-hidden">
