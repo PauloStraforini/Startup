@@ -177,7 +177,7 @@ export default function Home() {
                 psicólogos.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/login">
+                <Link href="psicologos/login">
                   <button className="bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-3.5 px-8 rounded-full text-lg transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1 flex items-center justify-center group">
                     Comece Agora
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -708,7 +708,7 @@ export default function Home() {
               por 7 dias e veja a diferença.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/login">
+            <Link href="psicologos/login">
                 <button className="bg-gradient-to-r from-teal-400 to-teal-500 hover:from-teal-500 hover:to-teal-600 text-indigo-900 font-bold py-3.5 px-8 rounded-full text-lg transition-all duration-300 hover:shadow-lg hover:shadow-teal-500/30 transform hover:-translate-y-1 flex items-center justify-center group">
                   Comece Agora
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
