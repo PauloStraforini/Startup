@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Eye, EyeOff, Shield, Info, Brain, Lock, ArrowRight, CheckCircle, User, Mail, FileText } from "lucide-react"
 import { useState } from "react"
 
-import Apoio from "@/components/images/Doctor-pana.svg"
+// import Apoio from "@/components/images/Doctor-pana.svg"
 
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
@@ -355,13 +355,13 @@ export default function RegisterPage() {
               <Lock className="h-12 w-12 text-white" />
             </div>
 
-            <Image
+            {/* <Image
               src={Apoio || "/placeholder.svg"}
               alt="Ilustração de psicólogo"
               width={1000}
               height={600}
               className="mx-auto filter drop-shadow-2xl"
-            />
+            /> */}
 
             {/* Feature Cards */}
             <div className="absolute -bottom-8 -left-8 bg-white rounded-xl shadow-xl p-4 transform -rotate-3 z-20 border border-indigo-100 max-w-[200px]">
