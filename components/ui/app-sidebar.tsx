@@ -22,13 +22,13 @@ const data = {
     navMain: [
         {
             title: "Dashboard",
-            url: "/psicologos/dashboard",
+            url: "/dashboard",
             icon: Calendar,
             isActive: true,
         },
         {
             title: "Pacientes",
-            url: "/pacientes",
+            url: "",
             icon: FileText,
             items: [
                 {
