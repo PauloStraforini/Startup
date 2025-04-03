@@ -22,7 +22,7 @@ const data = {
     navMain: [
         {
             title: "Dashboard",
-            url: "/dashboard",
+            url: "/psicologos/dashboard",
             icon: Calendar,
             isActive: true,
         },
@@ -33,7 +33,7 @@ const data = {
             items: [
                 {
                     title: "Todos os Pacientes",
-                    url: "/pacientes",
+                    url: "/psicologos/todos-pacientes",
                     isActive: false,
                 },
                 {
@@ -43,7 +43,7 @@ const data = {
                 },
                 {
                     title: "Prontuários",
-                    url: "/pacientes/prontuarios",
+                    url: "/psicologos/prontuarios",
                     isActive: false,
                 },
             ],
@@ -82,7 +82,6 @@ const data = {
             items: [
                 {
                     title: "Biblioteca",
-                    url: "/recursos/biblioteca",
                     isActive: false,
                 },
                 {
