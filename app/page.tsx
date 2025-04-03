@@ -746,7 +746,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Brain className="h-8 w-8 text-teal-300" />
-                <span className="text-2xl font-bold text-teal-300">PsyTech</span>
+                <span className="text-2xl font-bold text-teal-300">MindFlow</span>
               </div>
               <p className="text-indigo-200 mb-6 leading-relaxed">
                 Transformando a prática clínica dos psicólogos com tecnologia inovadora.
@@ -790,7 +790,7 @@ export default function Home() {
                       <path d="M22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6ZM20 6L12 11L4 6H20ZM20 18H4V8L12 13L20 8V18Z" fill="currentColor"/>
                     </svg>
                   </div>
-                  <span>contato@psytech.com</span>
+                  <span>contato@MindFlow.com</span>
                 </li>
                 <li className="flex items-center">
                   <div className="w-8 h-8 rounded-full bg-indigo-800 flex items-center justify-center mr-3">
