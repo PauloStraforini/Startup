@@ -22,7 +22,7 @@ const data = {
     navMain: [
         {
             title: "Dashboard",
-            url: "/dashboard",
+            url: "/psicologos/dashboard",
             icon: Calendar,
             isActive: true,
         },
