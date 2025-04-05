@@ -181,7 +181,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <div className="p-3">
                     <div className="rounded-lg border border-indigo-100 dark:border-indigo-800 bg-white dark:bg-indigo-950/50 p-3 shadow-sm">
                         <div className="flex items-center gap-3 mb-2">
-                            <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-teal-500 text-white">
+                            <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-r from-rose-300 to-pink-500 text-white">
                                 <Shield className="size-4" />
                             </div>
                             <div className="text-sm font-medium text-indigo-900 dark:text-indigo-200">Plano Profissional</div>
