@@ -111,17 +111,17 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
-        <Sidebar className="border-r border-indigo-100 dark:border-indigo-800" {...props}>
+        <Sidebar className="border-r border-indigo-100 dark:border-rose-800" {...props}>
             <SidebarHeader className="pb-0">
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
                             <a href="#" className="flex items-center">
-                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-r from-indigo-600 to-teal-500 text-white">
+                                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-r from-rose-300 to-purple-500 text-white">
                                     <Brain className="size-4" />
                                 </div>
                                 <div className="flex flex-col gap-0.5 leading-none">
-                                    <span className="bg-gradient-to-r from-indigo-600 to-teal-500 bg-clip-text text-transparent font-extrabold">
+                                    <span className="bg-gradient-to-r from-rose-600 to-purple-500 bg-clip-text text-transparent font-extrabold">
                                         MindFlow
                                     </span>
                                     <span className="text-gray-600 dark:text-gray-400">v1.0.0</span>
@@ -135,7 +135,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500 dark:text-gray-400" />
                         <Input
                             placeholder="Pesquisar..."
-                            className="pl-9 h-9 bg-white dark:bg-indigo-950/50 border-indigo-100 dark:border-indigo-800 focus-visible:ring-indigo-600 dark:focus-visible:ring-indigo-400"
+                            className="pl-9 h-9 bg-white dark:bg-indigo-950/50 border-indigo-100 dark:border-rose-800 focus-visible:ring-rose-600 dark:focus-visible:ring-indigo-400"
                         />
                     </div>
                 </div>
@@ -148,11 +148,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                 <SidebarMenuButton
                                     asChild
                                     isActive={item.isActive}
-                                    className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 data-[active=true]:bg-indigo-50 dark:data-[active=true]:bg-indigo-900/50 data-[active=true]:text-indigo-600 dark:data-[active=true]:text-indigo-400"
+                                    className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-rose-400 data-[active=true]:bg-indigo-50 dark:data-[active=true]:bg-indigo-900/50 data-[active=true]:text-indigo-600 dark:data-[active=true]:text-indigo-400"
                                 >
                                     <a href={item.url}>
                                         {item.icon && (
-                                            <item.icon className="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-indigo-600 dark:group-hover:text-indigo-400" />
+                                            <item.icon className="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-rose-600 dark:group-hover:text-indigo-400" />
                                         )}
                                         <span>{item.title}</span>
                                     </a>
@@ -164,7 +164,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                                 <SidebarMenuSubButton
                                                     asChild
                                                     isActive={subItem.isActive}
-                                                    className="text-gray-700 hover:text-indigo-600 dark:text-gray-300 dark:hover:text-indigo-400 data-[active=true]:text-indigo-600 dark:data-[active=true]:text-indigo-400"
+                                                    className="text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-indigo-400 data-[active=true]:text-indigo-600 dark:data-[active=true]:text-indigo-400"
                                                 >
                                                     <a href={subItem.url}>{subItem.title}</a>
                                                 </SidebarMenuSubButton>
