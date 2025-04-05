@@ -1,81 +1,26 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
+  output = "../generated/prisma"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+model Psicologo {
+  id              String     @id @default(uuid()) @map("_id") @db.Uuid
+  crp             String     @unique
+  email           String     @unique
+  nomeCompleto    String
+  dataNascimento  DateTime
+  especialidades  String[]         
 
-model Product {
-  id          String  @id @default(auto()) @map("_id") @db.ObjectId
-  productId   Int   
-  cartId      String  @db.ObjectId
-  quantity    Int
-  size        String
-
-  cart        Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
-}
-
-model Cart {
-  id                 String  @id @default(auto()) @map("_id") @db.ObjectId
-  products           Product[]
-  userId             String  @db.ObjectId
-
-  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId])
-}
-
-model WishList {
-  id                 String @id @default(auto()) @map("_id") @db.ObjectId
-  productsId         Int[]
-  addedAt            DateTime
-  userId             String  @db.ObjectId
-  
-  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([userId])
-}
-
-model User {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  name            String?
-  email           String?   @unique
-  image           String?
-  hashedPassword  String?   @db.String
-  emailVerified   DateTime?
-  cart            Cart?
-  wishList        WishList?
-
-  accounts        Account[]
-}
-
-model Account {
-  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
-  userId             String   @db.ObjectId
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.String
-  access_token       String?  @db.String
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.String
-  session_state      String?
-
-  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
-
-model PasswordResetToken {
-  id        String      @id @default(auto()) @map("_id") @db.ObjectId
-  email     String
-  token     String      @unique @db.String
-  expires   DateTime
-
-  @@unique([email, token])
+  @@map("psicologos")
 }
