@@ -14,9 +14,9 @@ datasource db {
 
 
 model Psicologo {
-  id              String   @id @default(uuid()) @map("_id") @db.Uuid
-  crp             String     @unique
-  email           String     @unique
+  id              Int      @id @default(autoincrement()) @map("_id")
+  crp             String   @unique
+  email           String   @unique
   nomeCompleto    String
   dataNascimento  DateTime
   especialidades  String   
